@@ -1,3 +1,5 @@
+using Microsoft.AspNetCore.Builder;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -33,5 +35,11 @@ app.UseCors("CorsPolicy");
 app.UseAuthorization();
 
 app.MapControllers();
+
+app.UseSpa(spa =>
+{
+    spa.Options.DefaultPage = "/index.html";
+    spa.Options.SourcePath = "/";
+});
 
 app.Run();
